@@ -7,4 +7,4 @@ passlib[bcrypt]
 python-multipart
 numpy
 pandas
-sklearn
+scikit-learn
