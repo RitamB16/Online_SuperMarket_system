@@ -17,7 +17,7 @@ const Checkout = () => {
 
     // PRE-CHECKOUT VALIDATION (Fail-Fast)
     if (cartItems.length > 0) {
-      axios.post('http://127.0.0.1:8000/api/checkout/validate', { 
+      axios.post('https://online-supermarket-system.onrender.com/checkout/validate', { 
         items: cartItems.map(item => ({ product_id: item.id, quantity: item.quantity })) 
       })
       .catch(err => {
@@ -42,7 +42,7 @@ const Checkout = () => {
 
     const payload = { items: cart.map(item => ({ product_id: item.id, quantity: item.quantity })) };
 
-    axios.post('http://127.0.0.1:8000/api/checkout', payload)
+    axios.post('https://online-supermarket-system.onrender.com/checkout', payload)
       .then(res => {
         setIsProcessing(false);
         alert(`Payment of ₹${res.data.total_charged.toFixed(2)} Successful! Order placed.`);

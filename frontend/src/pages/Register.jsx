@@ -21,7 +21,7 @@ const Register = () => {
       seller_category: role === 'clerk' ? sellerCategory : null 
     };
 
-    axios.post('http://127.0.0.1:8000/api/register', payload)
+    axios.post('https://online-supermarket-system.onrender.com/register', payload)
       .then(res => {
         alert('Account created successfully! Please log in.');
         navigate('/login');

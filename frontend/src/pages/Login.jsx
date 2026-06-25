@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const endpoint = isRegistering ? 'http://127.0.0.1:8000/api/register' : 'http://127.0.0.1:8000/api/login';
+    const endpoint = isRegistering ? 'https://online-supermarket-system.onrender.com/register' : 'https://online-supermarket-system.onrender.com/login';
     
     const payload = { ...formData };
     if (payload.role !== 'clerk') payload.seller_category = null;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Import the messenger tool!
+import axios from 'axios';
 import ProductCard from '../components/ProductCard';
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
 
   // useEffect runs automatically as soon as the page loads on the screen
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/products')
+    axios.get('https://online-supermarket-system.onrender.com/products')
       .then((response) => {
         // Success! We got the data from Python. Save it to our state.
         setProducts(response.data);

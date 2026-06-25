@@ -19,7 +19,7 @@ const CustomerStore = () => {
   // Fetch products from database
   useEffect(() => {
     const fetchFreshStock = () => {
-      axios.get('http://127.0.0.1:8000/api/products')
+      axios.get('https://online-supermarket-system.onrender.com/api/products')
         .then(res => setProducts(res.data))
         .catch(err => console.error("Error fetching products:", err));
     };
@@ -56,7 +56,7 @@ const CustomerStore = () => {
         // Add to memory IMMEDIATELY so it doesn't double-fire
         reportedSearches.current.add(searchTerm);
         
-        axios.post('http://127.0.0.1:8000/api/search/record_miss', { query: debouncedSearch })
+        axios.post('https://online-supermarket-system.onrender.com/search/record_miss', { query: debouncedSearch })
           .catch(err => console.error("Error reporting missed search:", err));
       }
     }

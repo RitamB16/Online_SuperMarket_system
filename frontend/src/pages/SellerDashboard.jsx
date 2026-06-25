@@ -78,7 +78,7 @@ const SellerDashboard = () => {
     setActiveTab('new_product');
   };
   const handleDismissNotification = (id) => {
-    axios.delete(`http://127.0.0.1:8000/api/notifications/${id}`)
+    axios.delete(`https://online-supermarket-system.onrender.com/notifications/${id}`)
       .then(() => fetchNotifications())
       .catch(err => console.error(err));
   };

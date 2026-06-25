@@ -38,26 +38,26 @@ const ManagerDashboard = () => {
   }, [role]);
 
   const fetchSellers = () => {
-    axios.get('http://127.0.0.1:8000/api/admin/sellers')
+    axios.get('https://online-supermarket-system.onrender.com/admin/sellers')
       .then(res => setSellers(res.data))
       .catch(err => console.error(err));
   };
 
   const fetchAnalytics = () => {
-    axios.get('http://127.0.0.1:8000/api/admin/analytics')
+    axios.get('https://online-supermarket-system.onrender.com/admin/analytics')
       .then(res => setAnalytics(res.data))
       .catch(err => console.error("Error fetching AI analytics:", err));
   };
 
   // --- NEW: Fetch Market Demand ---
   const fetchDemands = () => {
-    axios.get('http://127.0.0.1:8000/api/admin/demand')
+    axios.get('https://online-supermarket-system.onrender.com/admin/demand')
       .then(res => setDemands(res.data))
       .catch(err => console.error("Error fetching demands:", err));
   };
 
   const handleUpdateStatus = (sellerId, newStatus) => {
-    axios.put(`http://127.0.0.1:8000/api/admin/sellers/${sellerId}/status`, { status: newStatus })
+    axios.put(`https://online-supermarket-system.onrender.com/admin/sellers/${sellerId}/status`, { status: newStatus })
       .then(res => {
         showMessage(res.data.message, 'success');
         fetchSellers();
@@ -66,7 +66,7 @@ const ManagerDashboard = () => {
   };
 
   const handleNotifySeller = (sellerName, productName, actionReq) => {
-    axios.post('http://127.0.0.1:8000/api/admin/notify', {
+    axios.post('https://online-supermarket-system.onrender.com/admin/notify', {
       seller: sellerName,
       product: productName,
       message: `MANAGER URGENT: Fulfill stock for ${productName} (${actionReq})`
@@ -75,7 +75,7 @@ const ManagerDashboard = () => {
     .catch(err => showMessage("Failed to send alert", 'error'));
   };
   const handleDismissDemand = (term) => {
-    axios.delete(`http://127.0.0.1:8000/api/admin/demand/${term}`)
+    axios.delete(`https://online-supermarket-system.onrender.com/admin/demand/${term}`)
       .then(res => {
         showMessage(res.data.message, 'success');
         fetchDemands();
@@ -97,7 +97,7 @@ const ManagerDashboard = () => {
       <div className="w-64 bg-gray-900 text-gray-300 flex flex-col shadow-xl z-10">
         <div className="p-6 border-b border-gray-800">
           <h2 className="text-xl font-black text-white tracking-wider">Control Center</h2>
-          <p className="text-xs text-green-400 mt-1">Boss Mode Active</p>
+          <p className="text-xs text-green-400 mt-1"> BE A MANAGER</p>
         </div>
         
         <nav className="flex-1 p-4 space-y-2">
