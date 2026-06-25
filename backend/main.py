@@ -20,10 +20,11 @@ app = FastAPI(title="SuperMart API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://online-super-market-system-7saq2bd52-algo-x2.vercel.app"],
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"]
 )
 
 SECRET_KEY = "super_secret_supermart_key"
