@@ -17,7 +17,7 @@ const Checkout = () => {
 
     // PRE-CHECKOUT VALIDATION (Fail-Fast)
     if (cartItems.length > 0) {
-      axios.post('https://online-supermarket-system.onrender.com/checkout/validate', { 
+      axios.post('https://online-supermarket-system.onrender.com/api/checkout/validate', { 
         items: cartItems.map(item => ({ product_id: item.id, quantity: item.quantity })) 
       })
       .catch(err => {
