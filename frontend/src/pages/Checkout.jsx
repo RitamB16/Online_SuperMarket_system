@@ -42,7 +42,7 @@ const Checkout = () => {
 
     const payload = { items: cart.map(item => ({ product_id: item.id, quantity: item.quantity })) };
 
-    axios.post('https://online-supermarket-system.onrender.com/checkout', payload)
+    axios.post('https://online-supermarket-system.onrender.com/api/checkout', payload)
       .then(res => {
         setIsProcessing(false);
         alert(`Payment of ₹${res.data.total_charged.toFixed(2)} Successful! Order placed.`);

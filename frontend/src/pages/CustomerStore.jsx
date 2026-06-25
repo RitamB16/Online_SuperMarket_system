@@ -56,7 +56,7 @@ const CustomerStore = () => {
         // Add to memory IMMEDIATELY so it doesn't double-fire
         reportedSearches.current.add(searchTerm);
         
-        axios.post('https://online-supermarket-system.onrender.com/search/record_miss', { query: debouncedSearch })
+        axios.post('https://online-supermarket-system.onrender.com/api/search/record_miss', { query: debouncedSearch })
           .catch(err => console.error("Error reporting missed search:", err));
       }
     }

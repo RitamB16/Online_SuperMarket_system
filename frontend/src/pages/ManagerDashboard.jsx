@@ -38,26 +38,26 @@ const ManagerDashboard = () => {
   }, [role]);
 
   const fetchSellers = () => {
-    axios.get('https://online-supermarket-system.onrender.com/admin/sellers')
+    axios.get('https://online-supermarket-system.onrender.com/api/admin/sellers')
       .then(res => setSellers(res.data))
       .catch(err => console.error(err));
   };
 
   const fetchAnalytics = () => {
-    axios.get('https://online-supermarket-system.onrender.com/admin/analytics')
+    axios.get('https://online-supermarket-system.onrender.com/api/admin/analytics')
       .then(res => setAnalytics(res.data))
       .catch(err => console.error("Error fetching AI analytics:", err));
   };
 
   // --- NEW: Fetch Market Demand ---
   const fetchDemands = () => {
-    axios.get('https://online-supermarket-system.onrender.com/admin/demand')
+    axios.get('https://online-supermarket-system.onrender.com/api/admin/demand')
       .then(res => setDemands(res.data))
       .catch(err => console.error("Error fetching demands:", err));
   };
 
   const handleUpdateStatus = (sellerId, newStatus) => {
-    axios.put(`https://online-supermarket-system.onrender.com/admin/sellers/${sellerId}/status`, { status: newStatus })
+    axios.put(`https://online-supermarket-system.onrender.com/api/admin/sellers/${sellerId}/status`, { status: newStatus })
       .then(res => {
         showMessage(res.data.message, 'success');
         fetchSellers();
@@ -66,7 +66,7 @@ const ManagerDashboard = () => {
   };
 
   const handleNotifySeller = (sellerName, productName, actionReq) => {
-    axios.post('https://online-supermarket-system.onrender.com/admin/notify', {
+    axios.post('https://online-supermarket-system.onrender.com/api/admin/notify', {
       seller: sellerName,
       product: productName,
       message: `MANAGER URGENT: Fulfill stock for ${productName} (${actionReq})`
@@ -75,7 +75,7 @@ const ManagerDashboard = () => {
     .catch(err => showMessage("Failed to send alert", 'error'));
   };
   const handleDismissDemand = (term) => {
-    axios.delete(`https://online-supermarket-system.onrender.com/admin/demand/${term}`)
+    axios.delete(`https://online-supermarket-system.onrender.com/api/admin/demand/${term}`)
       .then(res => {
         showMessage(res.data.message, 'success');
         fetchDemands();

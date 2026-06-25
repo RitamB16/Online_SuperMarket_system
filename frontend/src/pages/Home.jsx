@@ -8,7 +8,7 @@ const Home = () => {
 
   // useEffect runs automatically as soon as the page loads on the screen
   useEffect(() => {
-    axios.get('https://online-supermarket-system.onrender.com/products')
+    axios.get('https://online-supermarket-system.onrender.com/api/products')
       .then((response) => {
         // Success! We got the data from Python. Save it to our state.
         setProducts(response.data);

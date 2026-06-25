@@ -29,13 +29,13 @@ const SellerDashboard = () => {
   }, [username]);
 
   const fetchMyProducts = () => {
-    axios.get(`http://127.0.0.1:8000/api/seller/${username}/products`)
+    axios.get(`https://online-supermarket-system.onrender.com/api/seller/${username}/products`)
       .then(res => setMyProducts(res.data))
       .catch(err => console.error("Error fetching products:", err));
   };
 
   const fetchNotifications = () => {
-    axios.get(`http://127.0.0.1:8000/api/seller/${username}/notifications`)
+    axios.get(`https://online-supermarket-system.onrender.com/api/seller/${username}/notifications`)
       .then(res => setNotifications(res.data))
       .catch(err => console.error("Error fetching alerts:", err));
   };
@@ -49,7 +49,7 @@ const SellerDashboard = () => {
     e.preventDefault();
     const payload = { ...formData, price: parseFloat(formData.price), stock_quantity: parseInt(formData.stock_quantity) };
 
-    axios.post(`http://127.0.0.1:8000/api/products?username=${username}`, payload)
+    axios.post(`https://online-supermarket-system.onrender.com/api/products?username=${username}`, payload)
       .then(res => {
         showMessage(res.data.message, 'success');
         setFormData({ name: '', category: sellerCategory, price: '', stock_quantity: '', image_url: 'https://placehold.co/500x500/e2e8f0/1e293b?text=New+Item' });
@@ -63,7 +63,7 @@ const SellerDashboard = () => {
     const amountToAdd = parseInt(restockAmounts[productId]);
     if (!amountToAdd || amountToAdd <= 0) return;
 
-    axios.put(`http://127.0.0.1:8000/api/products/${productId}/restock`, { added_quantity: amountToAdd })
+    axios.put(`https://online-supermarket-system.onrender.com/api/products/${productId}/restock`, { added_quantity: amountToAdd })
       .then(res => {
         showMessage(res.data.message, 'success');
         setRestockAmounts({ ...restockAmounts, [productId]: '' }); 
@@ -78,7 +78,7 @@ const SellerDashboard = () => {
     setActiveTab('new_product');
   };
   const handleDismissNotification = (id) => {
-    axios.delete(`https://online-supermarket-system.onrender.com/notifications/${id}`)
+    axios.delete(`https://online-supermarket-system.onrender.com/api/notifications/${id}`)
       .then(() => fetchNotifications())
       .catch(err => console.error(err));
   };
