@@ -15,7 +15,6 @@ const Checkout = () => {
     const cartItems = JSON.parse(savedCart);
     setCart(cartItems);
 
-    // PRE-CHECKOUT VALIDATION (Fail-Fast)
     if (cartItems.length > 0) {
       axios.post('https://online-supermarket-system.onrender.com/api/checkout/validate', { 
         items: cartItems.map(item => ({ product_id: item.id, quantity: item.quantity })) 
