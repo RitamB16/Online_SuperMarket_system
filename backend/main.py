@@ -20,7 +20,7 @@ app = FastAPI(title="SuperMart API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=["https://online-super-market-system-7saq2bd52-algo-x2.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
